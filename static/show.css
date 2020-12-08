@@ -1,0 +1,65 @@
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc_disabled:after,
+    table.dataTable thead .sorting_asc_disabled:before,
+    table.dataTable thead .sorting_desc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc_disabled:after,
+    table.dataTable thead .sorting_desc_disabled:before {
+        bottom: .5em;
+    }
+    
+    .color {
+        background-color: #356a9c;
+        color: white;
+    }
+    
+    .navbar-brand {
+        font-size: 530px;
+    }
+    
+    .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #356a9c;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 15px;
+        padding: 10px;
+        width: 100px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+    
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    
+    .button:hover span {
+        padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .progress {
+        width: 300px;
+    }

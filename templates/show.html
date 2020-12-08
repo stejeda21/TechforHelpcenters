@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Edit Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="/static/show.css" rel="stylesheet" type="text/css">
+    <!-- MDBootstrap Datatables  -->
+    <link href="/static/addons/datatables2.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- JQUERY -->
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+
+<body>
+    {% for msg in get_flashed_messages() %}
+    <div class="alert alert-info">{{ msg }}</div>
+    {% endfor %}
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light blue-grey lighten-5 mb-2">
+
+        <!-- Navbar brand -->
+        <img src="https://www.pngkit.com/png/detail/281-2812821_user-account-management-logo-user-icon-png.png" width="40" height="30" alt="">
+        <a class="navbar-brand" href="/refugees">Refugees</a>
+
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+        class="navbar-toggler-icon"></span></button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/refugee-registration">Refugee Registration<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/logout">Log out</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/refugees/all">Show All</a>
+                </li>
+
+            </ul>
+            <!-- Links -->
+
+            <!-- Search form -->
+            <form class="form-inline ml-auto">
+                <div class="md-form my-0">
+                    <input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" aria-label="Search">
+                </div>
+            </form>
+        </div>
+        <!-- Collapsible content -->
+
+    </nav>
+    <br>
+    <h2>Help Center Capacity</h2>
+
+    <br>
+    <div class="progress">
+        <div class="progress-bar" id="progress" role="progressbar" style="height: 32px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <p id="percentage" name="percentage"></p>
+        </div>
+    </div>
+
+    <br>
+    <form>
+        <button formaction="/refugees/capacity" formmethod="GET" class="btn btn-success">Send Capacity Update</button>
+    </form>
+    <br>
+    <br>
+
+    <table id="myTable" class="table" cellspacing="0" width="100%">
+        <thead>
+            <tr class="color">
+                <th scope="col">First name
+                </th>
+                <th scope="col">Last name
+                </th>
+                <th scope="col">Phone number
+                </th>
+                <th scope="col">Help Center
+                </th>
+                <th scope="col">Status
+                </th>
+                <th scope="col">Edit refugee
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="refugee-data">
+                {% for refugee in refugees %}
+                <td>{{refugee.firstname}}</td>
+                <td>{{refugee.lastname}}</td>
+                <td>{{refugee.phonenumber}}</td>
+                <td>{{refugee.helpcenter}}</td>
+                <td id="status">{{refugee.check_in_status}}</td>
+                <td>
+                    <form>
+                        <button class=button formaction="/refugees/{{ refugee.refugee_id }}/edit" formmethod="GET" style="vertical-align:middle"><span>Edit </span>
+                    </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <style>
+        .bs-example {
+            margin: 20px;
+        }
+    </style>
+    </head>
+
+    <script src="/static/show.js "></script>
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="static/js/addons/datatables2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+</body>
+
+</html>
